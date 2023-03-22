@@ -1,25 +1,14 @@
-package com.giangdh.graph.algorithms;
+package com.giangdh.graph;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
-public class Leetcode1462 {
+public class Leetcode2192 {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-	}
-
-	public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
-		List<List<Integer>> ancestors = getAncestors(numCourses, prerequisites);
-		List<Boolean> ans = new ArrayList<>();
-		for (int i = 0; i < queries.length; i++) {
-			List<Integer> lst = ancestors.get(queries[i][1]);
-			ans.add(lst.contains(queries[i][0]));
-		}
-		Queue<Integer> q = new PriorityQueue<>();
-		return ans;
 	}
 
 	public static List<List<Integer>> getAncestors(int n, int[][] edges) {
@@ -31,6 +20,7 @@ public class Leetcode1462 {
 			visited = new boolean[n];
 			rs = new ArrayList<>();
 			dfs(i, visited, lstAdjancent, rs);
+			Collections.sort(rs);
 			result.add(rs);
 		}
 		return result;
@@ -42,6 +32,7 @@ public class Leetcode1462 {
 			if (!visited[ad.to]) {
 				rs.add(ad.to);
 				dfs(ad.to, visited, lstAdjancent, rs);
+
 			}
 		}
 	}

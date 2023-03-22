@@ -50,7 +50,7 @@ public class LeetCode4Logarit {
 				start = partitionNums1 + 1;
 			}
 		}
-		// If we reach here, it means the arrays are not sorted
+		// If we reach here, it fmeans the arrays are not sorted
 		throw new IllegalArgumentException();
 	}
 }

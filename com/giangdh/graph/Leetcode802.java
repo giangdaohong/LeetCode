@@ -1,4 +1,4 @@
-package com.giangdh.graph.algorithms;
+package com.giangdh.graph;
 
 import java.util.ArrayList;
 import java.util.Collections;
