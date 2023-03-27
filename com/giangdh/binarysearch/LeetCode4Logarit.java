@@ -1,4 +1,4 @@
-package com.giangdh.graph.array.binarysearch;
+package com.giangdh.binarysearch;
 
 public class LeetCode4Logarit {
 
