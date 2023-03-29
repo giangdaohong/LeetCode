@@ -1,4 +1,4 @@
-package com.giangdh.graph.twopoint;
+package com.giangdh.array.twopoint;
 
 public class LeetCode42 {
 
