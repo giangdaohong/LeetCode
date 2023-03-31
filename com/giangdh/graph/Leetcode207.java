@@ -8,10 +8,8 @@ public class Leetcode207 {
 	public static void main(String[] args) {
 		System.out.println("Hello world");
 		// [[1,4],[2,4],[3,1],[3,2]]
-
 		int[][] prerequisites = { { 0, 1 }, { 1, 0 } };
 		System.out.println(canFinish(2, prerequisites));
-
 	}
 
 	public static boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -27,6 +25,7 @@ public class Leetcode207 {
 		}
 		return true;
 	}
+
 	// check if exist cycle the return false
 	private static boolean dfs(int i, boolean[] visited, boolean[] currentStack, List<List<Edges>> lstAdjacent) {
 		if (currentStack[i]) {
@@ -49,6 +48,7 @@ public class Leetcode207 {
 		currentStack[i] = false;
 		return true;
 	}
+
 	static List<List<Edges>> convertToAdjacent(int numCourses, int[][] prerequisites) {
 		List<List<Edges>> rs = new ArrayList<>();
 		// Initial list
@@ -62,9 +62,11 @@ public class Leetcode207 {
 		}
 		return rs;
 	}
+
 	static class Edges {
 		public int from;
 		public int to;
+
 		public Edges(int from, int to) {
 			this.from = from;
 			this.to = to;
