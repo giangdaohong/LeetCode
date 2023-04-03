@@ -39,42 +39,23 @@ public class LeetCode572 {
 	}
 
 	public static boolean isSubtree(TreeNode root, TreeNode subRoot) {
-		return helper(root, subRoot);
+		if (root == null) {
+			return false;
+		}
+		if (helper(root, subRoot)) {
+			return true;
+		}
+
+		return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
 	}
 
 	public static boolean helper(TreeNode root, TreeNode subRoot) {
-		if (root == null && subRoot == null) {
-			return true;
-		}
-		// Both is leaf
-		if (root != null && subRoot != null) {
-			if (root.left == null && subRoot.left == null && root.right == null && subRoot.right == null) {
-				return root.val == subRoot.val;
-			}
+
+		if (root == null || subRoot == null) {
+			return root == null && subRoot == null;
 		}
 
-		if (root == null && subRoot != null)
-			return false;
+		return root.val == subRoot.val && helper(root.left, subRoot.left) && helper(root.right, subRoot.right);
 
-		if (root != null && subRoot == null)
-			return false;
-
-		boolean isCaseOne = false;
-		boolean isCaseTwo = false;
-		if (root.val == subRoot.val) {
-
-			if (root.left.val == subRoot.left.val && root.right.val == subRoot.right.val) {
-				isCaseOne = helper(root.left, subRoot.left) && helper(root.right, subRoot.right);
-			}
-		}
-
-		if (isCaseOne)
-			return true;
-
-		if (!isCaseOne) {
-			isCaseTwo = helper(root.left, subRoot) || helper(root.right, subRoot);
-		}
-
-		return isCaseTwo;
 	}
 }
