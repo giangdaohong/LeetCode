@@ -23,6 +23,7 @@ public class LeetCode14 {
 			String cur = strs[0].substring(0, i);
 			boolean isExist = true;
 			for (String st : strs) {
+				maxLeng = Math.min(maxLeng, st.length());
 				if (i > st.length() || !cur.equals(st.substring(0, i))) {
 					isExist = false;
 					break;
