@@ -5,9 +5,7 @@ public class LeetCode42 {
 	public static void main(String[] args) {
 		int[] height = { 1, 0, 2, 1, 0, 1, 3, 2, 1, 2 };
 		System.out.println(trap(height));
-
 	}
-
 	public static int trap(int[] height) {
 
 		int[] dp = new int[height.length];
