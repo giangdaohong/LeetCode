@@ -1,2 +1,1 @@
-# GraphTheory
-Graph algorithms 
+# LeetCode practice
