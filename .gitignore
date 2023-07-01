@@ -1,3 +1,5 @@
+# file: ~/.gitignore_global
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -12,7 +14,7 @@ out/
 .settings
 .springBeans
 .sts4-cache
-**/.idea
+**/.idea/**
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
@@ -28,4 +30,4 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store.idea
