@@ -1,4 +1,4 @@
-package com.leetcode.Bitwise;
+package com.leetcode.bitwiseoper;
 
 public class LC268 {
     public static void main(String[] args) {
