@@ -16,10 +16,6 @@ public class LC1009 {
         int tm = (int) (Math.log(n - 1) / Math.log(2));
         int tm2 = tm << 1;
 
-        System.out.println("n :" + Integer.toBinaryString(n));
-        System.out.println("~n :" + Integer.toBinaryString(~n));
-        System.out.println("mask :" + Integer.toBinaryString(tm2));
-
         System.out.println(Integer.toBinaryString((~n) & (~tm2)));
         return (~n) & (~tm2);
     }
