@@ -1,4 +1,4 @@
-package com.leetcode.Bitwise;
+package com.leetcode.bitwise;
 
 import java.util.Arrays;
 import java.util.Comparator;

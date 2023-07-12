@@ -1,7 +1,4 @@
-package com.leetcode.Bitwise;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.leetcode.bitwise;
 
 public class LC1863 {
 	public static void main(String[] args) {

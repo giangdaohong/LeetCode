@@ -1,4 +1,4 @@
-package com.leetcode.Bitwise;
+package com.leetcode.bitwise;
 
 public class LC461 {
 
