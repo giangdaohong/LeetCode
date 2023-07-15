@@ -7,7 +7,7 @@ public class LeetCode131 {
     public static void main(String[] args) {
         String s = "aab";
         //new LeetCode131().palindrome(s, 0, 0);
-        new LeetCode131().partition(s);
+        System.out.println(new LeetCode131().partition(s));;
     }
 
     public List<List<String>> partition(String s) {

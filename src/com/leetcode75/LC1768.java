@@ -3,8 +3,6 @@ package com.leetcode75;
 public class LC1768 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public String mergeAlternately(String word1, String word2) {
@@ -24,9 +22,7 @@ public class LC1768 {
 				j++;
 			}
 		}
-
 		return sb.toString();
-
 	}
 
 }

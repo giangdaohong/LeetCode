@@ -3,7 +3,7 @@ package com.liked100;
 public class LeetCode153 {
     public static void main(String[] args) {
         int[] nums = {2, 1};
-        new LeetCode153().findMin(nums);
+        System.out.println(new LeetCode153().findMin(nums));
     }
 
     public int findMin(int[] nums) {

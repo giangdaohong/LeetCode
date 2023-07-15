@@ -25,14 +25,11 @@ public class LeetCode88 {
                 x++;
             }
         }
-
         for (int i = 0; i < m + n; i++) {
             nums1[i] = tm[i];
         }
     }
-
     public void merge2(int[] nums1, int m, int[] nums2, int n) {
-
         int i = m - 1, j = n - 1, k = m + n - 1;
         while (i >= 0 && j >= 0) {
             if (nums1[i] < nums2[j]) {

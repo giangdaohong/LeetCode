@@ -3,7 +3,7 @@ package com.topInterview150;
 public class LeetCode121 {
     public static void main(String[] args) {
         int[] prices = {7, 2, 3, 5, 1, 6};
-        new LeetCode121().maxProfit(prices);
+        System.out.println(new LeetCode121().maxProfit(prices));
     }
 
     public int maxProfit(int[] prices) {
