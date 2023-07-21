@@ -49,8 +49,8 @@ public class LC1657 {
         int n = word1.length();
         if (n != word2.length()) return false;
         if (word1.equals(word2)) return true;
-        int freq1[] = new int['z' + 1];
-        int freq2[] = new int['z' + 1];
+        int[] freq1 = new int['z' + 1];
+        int[] freq2 = new int['z' + 1];
         byte[] w = new byte[n];
         word1.getBytes(0, n, w, 0);
         for (byte c : w) {

@@ -12,15 +12,15 @@ public class LeetCode628 {
     public static int maximumProduct(int[] nums) {
         Arrays.sort(nums);
 
-        // if maximum and minium are same sign
+        // if maximum and minimum are same sign
 
         if (nums[0] * nums[nums.length - 1] >= 0) {
             return nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 2];
         }
 
-        // if maximum and minium are diffrent sign
+        // if maximum and minimum are different sign
         // The array like this -8 -5 -3 4 7 9 11 or -8 -5 -3 4 7 9 or, -8 - 5 9 10
-        int k = 3; // where k>=3 and nums.length >= k for any case genaral
+        int k = 3; // where k>=3 and nums.length >= k for any case general
         int l = 0;
         int r = nums.length - 1;
 
@@ -49,7 +49,6 @@ public class LeetCode628 {
             }
             k--;
         }
-
         return product;
     }
 }

@@ -1,6 +1,6 @@
 package com.giangdh.binarysearch;
 
-public class Leetcode209 {
+public class LeetCode209 {
 
 	public static void main(String[] args) {
 		int[] nums = new int[] { 1, 2, 3, 4, 5 };
