@@ -66,7 +66,7 @@ public class GCD {
     static int[][] table = new int[MAX][MAX];
 
     // it builds sparse table.
-    static void buildSparseTable(int arr[],
+    static void buildSparseTable(int[] arr,
                                  int n) {
         // GCD of single element is
         // element itself
@@ -112,7 +112,7 @@ public class GCD {
         }
         System.out.println(count);
 
-        int a[] = { 7, 2, 3, 0, 5, 10, 3, 12, 18 };
+        int[] a = {7, 2, 3, 0, 5, 10, 3, 12, 18};
         int n2 = a.length;
         buildSparseTable(a, n2);
         System.out.print(query(0, 2) + "\n");

@@ -6,11 +6,11 @@ public class SparseTables {
         System.out.println(Math.log(9)/Math.log(2));
         System.out.println(new SparseTables().RMQ1(nums, 2, 5));
         System.out.println(new SparseTables().RMQ2(nums, 2, 5));
-        System.out.println(new SparseTables().RMQOffical(nums, 2, 5));
+        System.out.println(new SparseTables().RMOfficial(nums, 2, 5));
     }
 
 
-    int RMQOffical(int[] nums, int L, int R) {
+    int RMOfficial(int[] nums, int L, int R) {
 
         int[][] sparse = preprocessOffical(nums);
         int j = (int) (Math.log(R - L + 1) / Math.log(2));

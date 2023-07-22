@@ -27,7 +27,7 @@ class Xd {
         out.println(sum);
     }
 
-    class SparseTable {
+    static class SparseTable {
         int[][] M;
         int n;
         int k;
