@@ -30,7 +30,6 @@ public class NonRepeatingNumbers {
 		System.out.println("Hello world");
 		if (ans.size() == 1)
 			ans.add(nums[n - 1]);
-
 		return ans;
 		// Code here
 	}
