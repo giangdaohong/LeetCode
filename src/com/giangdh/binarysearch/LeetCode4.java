@@ -106,7 +106,7 @@ public class LeetCode4 {
 
 		}
 		
-		return Double.valueOf(tmp[tmp.length - 1] + tmp[tmp.length - 2]) / 2;
+		return (double) (tmp[tmp.length - 1] + tmp[tmp.length - 2]) / 2;
 
 	}
 

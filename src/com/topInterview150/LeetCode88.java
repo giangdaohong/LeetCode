@@ -25,9 +25,7 @@ public class LeetCode88 {
                 x++;
             }
         }
-        for (int i = 0; i < m + n; i++) {
-            nums1[i] = tm[i];
-        }
+        if (m + n >= 0) System.arraycopy(tm, 0, nums1, 0, m + n);
     }
     public void merge2(int[] nums1, int m, int[] nums2, int n) {
         int i = m - 1, j = n - 1, k = m + n - 1;

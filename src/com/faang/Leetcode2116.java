@@ -30,9 +30,6 @@ public class Leetcode2116 {
                 open++;
             }
         }
-        if (close != open) {
-            return false;
-        }
-        return true;
+        return close == open;
     }
 }

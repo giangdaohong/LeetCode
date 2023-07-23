@@ -73,7 +73,10 @@ public class Leetcode334 {
             int m = 0;
             boolean isExist = true;
             while (m < k) {
-                if (track[m++] >= nums[n]) isExist = false;
+                if (track[m++] >= nums[n]) {
+                    isExist = false;
+                    break;
+                }
             }
             if (isExist) return true;
         }

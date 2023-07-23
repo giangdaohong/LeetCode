@@ -12,9 +12,7 @@ public class Lc48 {
         int[][] cp = new int[matrix.length][matrix[0].length];
 
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                cp[i][j] = matrix[i][j];
-            }
+            System.arraycopy(matrix[i], 0, cp[i], 0, matrix[0].length);
         }
         int curcl = matrix[0].length - 1;
         for (int j = 0; j < matrix.length; j++) {

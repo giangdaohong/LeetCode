@@ -20,13 +20,7 @@ public class Lc56 {
                 } else if (o1[o1.length - 1] < o2[o2.length - 1]) {
                     return -1;
                 } else {
-                    if (o1[0] > o2[0]) {
-                        return 1;
-                    } else if (o1[0] < o2[0]) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
+                    return Integer.compare(o1[0], o2[0]);
                 }
             }
         });
@@ -40,13 +34,9 @@ public class Lc56 {
             int[] pre = intervals[i - 1];
             if (cur[0] <= pre[1]) {
                 int start = 0, end = 0;
-                if (cur[0] > pre[0]) {
-                    start = pre[0];
-                } else {
-                    start = cur[0];
-                }
+                start = Math.min(cur[0], pre[0]);
                 end = cur[1];
-                while (res.size() > 0) {
+                while (!res.isEmpty()) {
                     List<Integer> tm = res.get(res.size() - 1);
                     if (tm.get(1) >= start) {
                         start = Math.min(start, tm.get(0));

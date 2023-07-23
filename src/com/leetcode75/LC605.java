@@ -12,11 +12,11 @@ public class LC605 {
 		if (flowerbed.length == 1) {
 			if (n == 0) {
 				if (flowerbed[0] == 0) {
-					return flowerbed[0] == 0 ? true : false;
+					return flowerbed[0] == 0;
 				}
-				return flowerbed[0] == 1 ? true : false;
+				return flowerbed[0] == 1;
 			}
-			return flowerbed[0] == 0 ? true : false;
+			return flowerbed[0] == 0;
 		}
 		for (int i = 0; i < flowerbed.length; i++) {
 
@@ -41,7 +41,7 @@ public class LC605 {
 				}
 			}
 		}
-		return n <= 0 ? true : false;
+		return n <= 0;
 	}
 
 }

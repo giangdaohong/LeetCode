@@ -21,9 +21,7 @@ public class LeetCode90 {
 
     void backtrack(int[] nums, int idx, int n, List<Integer> lst, Set<List<Integer>> res) {
         if (idx >= n) {
-            if (!res.contains(lst)) {
-                res.add(lst);
-            }
+            res.add(lst);
             return;
         }
         lst.add(nums[idx]);

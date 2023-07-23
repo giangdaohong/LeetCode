@@ -43,7 +43,7 @@ public class LC437 {
         if (root == null) {
             return;
         }
-        preSum += (long) root.val;
+        preSum += root.val;
         if (map.containsKey(preSum - target) && map.get(preSum - target) > 0) {
             rs++;
         }

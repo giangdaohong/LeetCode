@@ -13,7 +13,7 @@ public class LC345 {
 
 		int i = 0;
 		int j = s.length() - 1;
-		String st = new String("aeiouAEIOU");
+		String st = "aeiouAEIOU";
 
 		while (i <= j && i < s.length() - 1 && j >= 0) {
 			if (st.indexOf(charIput[i]) >= 0 && st.indexOf(charIput[j]) >= 0) {

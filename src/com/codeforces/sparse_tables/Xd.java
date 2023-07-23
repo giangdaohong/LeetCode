@@ -36,9 +36,7 @@ class Xd {
             n = a.length;
             k = 32 - Integer.numberOfLeadingZeros(n);
             M = new int[k][n];
-            for (int i = 0; i < n; i++) {
-                M[0][i] = a[i];
-            }
+            System.arraycopy(a, 0, M[0], 0, n);
 
             for (int j = 1; j < k; j++) {
                 for (int i = 0; i + (1 << j) - 1 < n; i++) {
@@ -65,7 +63,7 @@ class Xd {
 
     static class InputReader {
         private InputStream stream;
-        private byte[] buf = new byte[1024];
+        private final byte[] buf = new byte[1024];
         private int curChar;
         private int numChars;
 
@@ -189,6 +187,5 @@ class Xd {
             }
             return matrix;
         }
-
     }
 }

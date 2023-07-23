@@ -1,12 +1,26 @@
-package com.codeforces.util;
+package com.codechef.inoutfastest;
+
+// Working program using Reader Class
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class DemoInOutPut {
-    // Working program using Reader Class
+public class InOutFastest {
+    public static void main(String[] args)
+            throws IOException {
+        Reader s = new Reader();
+        int n = s.nextInt();
+        int k = s.nextInt();
+        int count = 0;
+        while (n-- > 0) {
+            int x = s.nextInt();
+            if (x % k == 0)
+                count++;
+        }
+        System.out.println(count);
+    }
+
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private final DataInputStream din;
@@ -119,18 +133,5 @@ public class DemoInOutPut {
             din.close();
         }
     }
-
-    public static void main(String[] args)
-            throws IOException {
-        Reader s = new Reader();
-        int n = s.nextInt();
-        int k = s.nextInt();
-        int count = 0;
-        while (n-- > 0) {
-            int x = s.nextInt();
-            if (x % k == 0)
-                count++;
-        }
-        System.out.println(count);
-    }
 }
+

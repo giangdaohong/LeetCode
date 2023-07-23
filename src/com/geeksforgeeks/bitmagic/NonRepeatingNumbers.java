@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NonRepeatingNumbers {
 	public static void main(String[] args) {
-		int arr[] = { 1, 2, 2, 4, 4, 3 };
+		int[] arr = { 1, 2, 2, 4, 4, 3 };
 		new NonRepeatingNumbers().singleNumber(arr);
 
 		int x  = 10; // 1010 // x - 1 = 1001 // x + 1 = 1011

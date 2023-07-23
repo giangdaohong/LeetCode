@@ -17,10 +17,8 @@ public class LC2206 {
 			rs ^= nums[i];
 		}
 		System.out.println(3 ^ 4 ^ 2 ^ 5);
-		if (rs == 0)
-			return true;
-		return false;
-	}
+        return rs == 0;
+    }
 
 	public boolean divideArray2(int[] nums) {
 		Map<Integer, Integer> mp = new HashMap<>();

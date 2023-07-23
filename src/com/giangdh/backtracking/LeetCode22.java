@@ -26,7 +26,7 @@ public class LeetCode22 {
 
     public List<String> generateParenthesis(int n) {
         List<String> answer = new ArrayList<>();
-        Queue<String> queue = new LinkedList<>(Arrays.asList(""));
+        Queue<String> queue = new LinkedList<>(List.of(""));
 
         while (!queue.isEmpty()) {
             String curString = queue.poll();

@@ -41,7 +41,7 @@ public class SparseTables {
     }
 
     int RMQ2(int[] nums, int L, int R) {
-        int dp[][] = new int[nums.length][nums.length];
+        int[][] dp = new int[nums.length][nums.length];
         preprocess(nums, dp);
 
         return dp[L][R];

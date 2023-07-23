@@ -6,11 +6,11 @@ import java.util.List;
 
 public class LC120 {
     public static void main(String[] args) {
-        List<Integer> l1 = new ArrayList<>(Arrays.asList(new Integer[]{2}));
-        List<Integer> l2 = new ArrayList<>(Arrays.asList(new Integer[]{3, 4}));
-        List<Integer> l3 = new ArrayList<>(Arrays.asList(new Integer[]{6, 5, 7}));
-        List<Integer> l4 = new ArrayList<>(Arrays.asList(new Integer[]{4, 1, 8, 3}));
-        List<Integer> l5 = new ArrayList<>(Arrays.asList(new Integer[]{7, 1, 8, 3, 2}));
+        List<Integer> l1 = new ArrayList<>(Arrays.asList(2));
+        List<Integer> l2 = new ArrayList<>(Arrays.asList(3, 4));
+        List<Integer> l3 = new ArrayList<>(Arrays.asList(6, 5, 7));
+        List<Integer> l4 = new ArrayList<>(Arrays.asList(4, 1, 8, 3));
+        List<Integer> l5 = new ArrayList<>(Arrays.asList(7, 1, 8, 3, 2));
         List<List<Integer>> tri = new ArrayList<>();
         tri.add(l1);
         tri.add(l2);
