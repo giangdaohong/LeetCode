@@ -1,24 +1,25 @@
 package com.codechef.inoutfastest;
 
-// Working program using Reader Class
-
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-public class InOutFastest {
-    public static void main(String[] args)
-            throws IOException {
-        Reader s = new Reader();
-        int n = s.nextInt();
-        int k = s.nextInt();
-        int count = 0;
-        while (n-- > 0) {
-            int x = s.nextInt();
-            if (x % k == 0)
-                count++;
-        }
-        System.out.println(count);
+public class InOutFastest_Template {
+    private static final PrintWriter out = new PrintWriter(System.out);
+    private static final Reader in = new Reader();
+
+    public static void main(String[] args) throws IOException {
+
+        int n = in.nextInt();
+        int[] a = in.nextArray(n);
+        int m = in.nextInt();
+        int x = in.nextInt();
+        int y = in.nextInt();
+        //TODO writing your code here.
+
+        out.println("");
+        out.flush();
     }
 
     static class Reader {
@@ -34,8 +35,7 @@ public class InOutFastest {
         }
 
         public Reader(String file_name) throws IOException {
-            din = new DataInputStream(
-                    new FileInputStream(file_name));
+            din = new DataInputStream(new FileInputStream(file_name));
             buffer = new byte[BUFFER_SIZE];
             bufferPointer = bytesRead = 0;
         }
@@ -63,41 +63,34 @@ public class InOutFastest {
                 c = read();
             }
             boolean neg = (c == '-');
-            if (neg)
-                c = read();
+            if (neg) c = read();
             do {
                 ret = ret * 10 + c - '0';
             } while ((c = read()) >= '0' && c <= '9');
 
-            if (neg)
-                return -ret;
+            if (neg) return -ret;
             return ret;
         }
 
         public long nextLong() throws IOException {
             long ret = 0;
             byte c = read();
-            while (c <= ' ')
-                c = read();
+            while (c <= ' ') c = read();
             boolean neg = (c == '-');
-            if (neg)
-                c = read();
+            if (neg) c = read();
             do {
                 ret = ret * 10 + c - '0';
             } while ((c = read()) >= '0' && c <= '9');
-            if (neg)
-                return -ret;
+            if (neg) return -ret;
             return ret;
         }
 
         public double nextDouble() throws IOException {
             double ret = 0, div = 1;
             byte c = read();
-            while (c <= ' ')
-                c = read();
+            while (c <= ' ') c = read();
             boolean neg = (c == '-');
-            if (neg)
-                c = read();
+            if (neg) c = read();
 
             do {
                 ret = ret * 10 + c - '0';
@@ -109,28 +102,30 @@ public class InOutFastest {
                 }
             }
 
-            if (neg)
-                return -ret;
+            if (neg) return -ret;
             return ret;
         }
 
         private void fillBuffer() throws IOException {
-            bytesRead = din.read(buffer, bufferPointer = 0,
-                    BUFFER_SIZE);
-            if (bytesRead == -1)
-                buffer[0] = -1;
+            bytesRead = din.read(buffer, bufferPointer = 0, BUFFER_SIZE);
+            if (bytesRead == -1) buffer[0] = -1;
         }
 
         private byte read() throws IOException {
-            if (bufferPointer == bytesRead)
-                fillBuffer();
+            if (bufferPointer == bytesRead) fillBuffer();
             return buffer[bufferPointer++];
         }
 
         public void close() throws IOException {
-            if (din == null)
-                return;
+            if (din == null) return;
             din.close();
+        }
+
+        public int[] nextArray(int N) throws IOException {
+            int[] a = new int[N];
+            for (int i = 0; i < N; i++)
+                a[i] = nextInt();
+            return a;
         }
     }
 }
