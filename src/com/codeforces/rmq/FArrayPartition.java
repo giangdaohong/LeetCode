@@ -1,4 +1,4 @@
-package com.codechef.problems.rmq;
+package com.codeforces.rmq;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -6,57 +6,63 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public final class FArrayPartition {
-    private static final PrintWriter out = new PrintWriter(System.out);
+    private static final PrintWriter io = new PrintWriter(System.out);
     private static final Reader in = new Reader();
 
     public static void main(String[] args) throws IOException {
         int t = in.nextInt();
-        int n;
-        int[] a;
-        int lg;
-        int[][] sp_min;
-        int[][] sp_max;
         while (t-- > 0) {
-            n = in.nextInt();
-            a = in.nextArray(n);
-            lg = 32 - Integer.numberOfLeadingZeros(n);
-            sp_min = new int[lg][n + 1];
-            System.arraycopy(a, 0, sp_min[0], 1, n);
+            int n = in.nextInt();
+            int[] a = in.nextArray(n);
+            int lg = 32 - Integer.numberOfLeadingZeros(n);
+            int[][] spMin = new int[lg][n];
+            System.arraycopy(a, 0, spMin[0], 0, n);
 
-            sp_max = new int[lg][n + 1];
-            System.arraycopy(a, 0, sp_max[0], 1, n);
+            int[] pMax = new int[n];
+            int[] sMax = new int[n];
+            pMax[0] = a[0];
+            for (int i = 1; i < n; i++) {
+                pMax[i] = Math.max(pMax[i - 1], a[i]);
+            }
+
+            sMax[n - 1] = a[n - 1];
+            for (int i = n - 2; i >= 0; i--) {
+                sMax[i] = Math.max(sMax[i + 1], a[i]);
+            }
 
             for (int j = 1; j < lg; j++) {
-                for (int i = 1; i + (1 << (j - 1)) < n + 1; i++) {
-                    sp_min[j][i] = Math.min(sp_min[j - 1][i], sp_min[j - 1][i + (1 << (j - 1))]);
-                    sp_max[j][i] = Math.max(sp_max[j - 1][i], sp_max[j - 1][i + (1 << (j - 1))]);
+                for (int i = 0; i + (1 << (j - 1)) < n; i++) {
+                    spMin[j][i] = Math.min(spMin[j - 1][i], spMin[j - 1][i + (1 << (j - 1))]);
                 }
             }
-            boolean isNext = false;
-            for (int x = n - 2; x >= 1; x--) {
-                for (int y = 1; x + y <= n - 1; y++) {
-                    int lg1 = 31 - Integer.numberOfLeadingZeros(x);
-                    int log2 = 31 - Integer.numberOfLeadingZeros(y);
-                    int log3 = 31 - Integer.numberOfLeadingZeros(n - (x + y));
-                    int max1;
-                    if (x == 1) max1 = a[0];
-                    else max1 = Math.max(sp_max[lg1][1], sp_max[lg1][x - (1 << lg1) + 1]);
-                    int min2 = Math.min(sp_min[log2][x + 1], sp_min[log2][x + y - (1 << log2) + 1]);
-                    int max3 = Math.max(sp_max[log3][x + y + 1], sp_max[log3][n - (1 << log3) + 1]);
-                    if (max1 == min2 && min2 == max3) {
-                        out.println("YES");
-                        out.println(x + " " + y + " " + (n - (x + y)));
-                        isNext = true;
-                        break;
+
+            boolean isY = false;
+            for (int x = 0; x < n - 2 && !isY; x++) {
+                int l = x + 1;
+                int r = n - 2;
+                while (l <= r && !isY) {
+                    int mid = l + (r - l) / 2;
+                    int log2 = 31 - Integer.numberOfLeadingZeros(mid - (x + 1) + 1);
+                    int min2 = Math.min(spMin[log2][x + 1], spMin[log2][mid - (1 << log2) + 1]);
+
+                    if (min2 > pMax[x] || sMax[mid + 1] > pMax[x]) {
+                        l = mid + 1;
+                    } else if (min2 < pMax[x] || sMax[mid + 1] < pMax[x]) {
+                        r = mid - 1;
+                    } else {
+                        io.println("YES");
+                        StringBuilder rs = new StringBuilder();
+                        rs.append(x + 1).append(" ").append(mid - x).append(" ").append(n - mid - 1);
+                        io.println(rs);
+                        isY = true;
                     }
                 }
-                if (isNext) break;
             }
-            if (!isNext) {
-                out.println("NO");
+            if (!isY) {
+                io.println("NO");
             }
         }
-        out.flush();
+        io.flush();
     }
 
     private static class Reader {

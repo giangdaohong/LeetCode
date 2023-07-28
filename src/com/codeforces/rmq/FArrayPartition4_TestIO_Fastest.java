@@ -1,65 +1,84 @@
-package com.codechef.problems.rmq;
-
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-class Rmq {
-    private static final PrintWriter out = new PrintWriter(System.out);
-    private static final Reader in = new Reader();
+public final class FArrayPartition4_TestIO_Fastest {
+    public static final PrintWriter io = new PrintWriter(System.out);
+    static final R in = new R();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        int t = in.nextInt();
+        while (t-- > 0) {
+            int n = in.nextInt();
+            int[] a = in.nextArray(n);
+            int lg = 32 - Integer.numberOfLeadingZeros(n);
+            int[][] spMin = new int[lg][n];
+            System.arraycopy(a, 0, spMin[0], 0, n);
 
-        int n = in.nextInt();
-        int[] a = in.nextArray(n);
-        int m = in.nextInt();
-        int x = in.nextInt();
-        int y = in.nextInt();
+            int[] pMax = new int[n];
+            int[] sMax = new int[n];
+            pMax[0] = a[0];
+            for (int i = 1; i < n; i++) {
+                pMax[i] = Math.max(pMax[i - 1], a[i]);
+            }
 
-        int k = 32 - Integer.numberOfLeadingZeros(n);
-        int[][] sp = new int[k][n];
+            sMax[n - 1] = a[n - 1];
+            for (int i = n - 2; i >= 0; i--) {
+                sMax[i] = Math.max(sMax[i + 1], a[i]);
+            }
 
-        System.arraycopy(a, 0, sp[0], 0, n);
+            for (int j = 1; j < lg; j++) {
+                for (int i = 0; i + (1 << (j - 1)) < n; i++) {
+                    spMin[j][i] = Math.min(spMin[j - 1][i], spMin[j - 1][i + (1 << (j - 1))]);
+                }
+            }
 
-        for (int j = 1; j < k; j++) {
-            for (int i = 0; i + (1 << (j - 1)) < n; i++) {
-                sp[j][i] = Math.max(sp[j - 1][i], sp[j - 1][i + (1 << (j - 1))]);
+            boolean isY = false;
+            for (int x = 0; x < n - 2 && !isY; x++) {
+                int l = x + 1;
+                int r = n - 2;
+                while (l <= r && !isY) {
+                    int mid = l + (r - l) / 2;
+                    int log2 = 31 - Integer.numberOfLeadingZeros(mid - (x + 1) + 1);
+                    int min2 = Math.min(spMin[log2][x + 1], spMin[log2][mid - (1 << log2) + 1]);
+
+                    if (min2 > pMax[x] || sMax[mid + 1] > pMax[x]) {
+                        l = mid + 1;
+                    } else if (min2 < pMax[x] || sMax[mid + 1] < pMax[x]) {
+                        r = mid - 1;
+                    } else {
+                        io.println("YES");
+                        StringBuilder rs = new StringBuilder();
+                        rs.append(x + 1).append(" ").append(mid - x).append(" ").append(n - mid - 1);
+                        io.println(rs);
+                        isY = true;
+                    }
+                }
+            }
+            if (!isY) {
+                io.println("NO");
             }
         }
-
-        long sum = 0;
-        int lg;
-        while (m-- > 0) {
-            int l = Math.min(x, y);
-            int r = Math.max(x, y);
-            lg = 31 - Integer.numberOfLeadingZeros(r - l + 1);
-            sum += Math.max(sp[lg][l], sp[lg][r - (1 << lg) + 1]);
-            x += 7;
-            if (x >= n - 1) x %= (n - 1);
-            y += 11;
-            if (y >= n) y %= n;
-        }
-        out.println(sum);
-        out.flush();
+        io.flush();
     }
 
-    static class Reader {
-        final private int BUFFER_SIZE = 1 << 16;
+    static class R {
+        final private int SIZE = 1 << 16;
         private final DataInputStream din;
-        private final byte[] buffer;
-        private int bufferPointer, bytesRead;
+        private final byte[] bf;
+        private int bfP, bR;
 
-        public Reader() {
+        public R() {
             din = new DataInputStream(System.in);
-            buffer = new byte[BUFFER_SIZE];
-            bufferPointer = bytesRead = 0;
+            bf = new byte[SIZE];
+            bfP = bR = 0;
         }
 
-        public Reader(String file_name) throws IOException {
+        public R(String file_name) throws IOException {
             din = new DataInputStream(new FileInputStream(file_name));
-            buffer = new byte[BUFFER_SIZE];
-            bufferPointer = bytesRead = 0;
+            bf = new byte[SIZE];
+            bfP = bR = 0;
         }
 
         public String readLine() throws IOException {
@@ -129,13 +148,13 @@ class Rmq {
         }
 
         private void fillBuffer() throws IOException {
-            bytesRead = din.read(buffer, bufferPointer = 0, BUFFER_SIZE);
-            if (bytesRead == -1) buffer[0] = -1;
+            bR = din.read(bf, bfP = 0, SIZE);
+            if (bR == -1) bf[0] = -1;
         }
 
         private byte read() throws IOException {
-            if (bufferPointer == bytesRead) fillBuffer();
-            return buffer[bufferPointer++];
+            if (bfP == bR) fillBuffer();
+            return bf[bfP++];
         }
 
         public void close() throws IOException {

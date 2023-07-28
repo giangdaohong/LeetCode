@@ -3,7 +3,7 @@ package com.codeforces.sparse_tables;
 public class SparseTables {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 4, 5, 7, 1};
-        System.out.println(Math.log(9)/Math.log(2));
+        System.out.println(Math.log(9) / Math.log(2));
         System.out.println(new SparseTables().RMQ1(nums, 2, 5));
         System.out.println(new SparseTables().RMQ2(nums, 2, 5));
         System.out.println(new SparseTables().RMOfficial(nums, 2, 5));

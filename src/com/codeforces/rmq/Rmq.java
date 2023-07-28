@@ -1,67 +1,50 @@
-package com.codechef.problems.rmq;
+package com.codeforces.rmq;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public final class FArrayPartition2 {
+class Rmq {
     private static final PrintWriter out = new PrintWriter(System.out);
     private static final Reader in = new Reader();
 
     public static void main(String[] args) throws IOException {
-        int t = in.nextInt();
-        while (t-- > 0) {
-            int n = in.nextInt();
-            int[] pMax = new int[n];
-            int[] a = in.nextArray(n);
-            int lg = 32 - Integer.numberOfLeadingZeros(n);
-            int[][] spMin = new int[lg][n];
-            System.arraycopy(a, 0, spMin[0], 0, n);
 
-            pMax[0] = a[0];
-            for (int i = 1; i < n; i++) {
-                pMax[i] = Math.max(pMax[i - 1], a[i]);
-            }
-            int[] sMax = new int[n];
+        int n = in.nextInt();
+        int[] a = in.nextArray(n);
+        int m = in.nextInt();
+        int x = in.nextInt();
+        int y = in.nextInt();
 
-            sMax[n - 1] = a[n - 1];
-            for (int i = n - 2; i >= 0; i--) {
-                sMax[i] = Math.max(sMax[i + 1], a[i]);
-            }
+        int k = 32 - Integer.numberOfLeadingZeros(n);
+        int[][] sp = new int[k][n];
 
-            for (int j = 1; j < lg; j++) {
-                for (int i = 0; i + (1 << (j - 1)) < n; i++) {
-                    spMin[j][i] = Math.min(spMin[j - 1][i], spMin[j - 1][i + (1 << (j - 1))]);
-                }
-            }
-            boolean y = false;
-            for (int x = 0; x < n - 2 && !y; x++) {
-                int l = x + 1;
-                int r = n - 2;
-                while (l <= r && !y) {
-                    int mid = l + (r - l) / 2;
-                    int lg2 = 31 - Integer.numberOfLeadingZeros(mid - x);
-                    int min = Math.min(spMin[lg2][x + 1], spMin[lg2][mid - (1 << lg2) + 1]);
+        System.arraycopy(a, 0, sp[0], 0, n);
 
-                    if (min > pMax[x] || sMax[mid + 1] > pMax[x]) {
-                        l = mid + 1;
-                    } else if (min < pMax[x] || sMax[mid + 1] < pMax[x]) {
-                        r = mid - 1;
-                    } else {
-                        out.println("YES" + "\n" + (x + 1) + " " + (mid - x) + " " + (n - mid - 1));
-                        y = true;
-                    }
-                }
-            }
-            if (!y) {
-                out.println("NO");
+        for (int j = 1; j < k; j++) {
+            for (int i = 0; i + (1 << (j - 1)) < n; i++) {
+                sp[j][i] = Math.max(sp[j - 1][i], sp[j - 1][i + (1 << (j - 1))]);
             }
         }
+
+        long sum = 0;
+        int lg;
+        while (m-- > 0) {
+            int l = Math.min(x, y);
+            int r = Math.max(x, y);
+            lg = 31 - Integer.numberOfLeadingZeros(r - l + 1);
+            sum += Math.max(sp[lg][l], sp[lg][r - (1 << lg) + 1]);
+            x += 7;
+            if (x >= n - 1) x %= (n - 1);
+            y += 11;
+            if (y >= n) y %= n;
+        }
+        out.println(sum);
         out.flush();
     }
 
-    private static class Reader {
+    static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private final DataInputStream din;
         private final byte[] buffer;
@@ -80,7 +63,7 @@ public final class FArrayPartition2 {
         }
 
         public String readLine() throws IOException {
-            byte[] buf = new byte[128]; // line length
+            byte[] buf = new byte[64]; // line length
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n') {
@@ -156,6 +139,7 @@ public final class FArrayPartition2 {
         }
 
         public void close() throws IOException {
+            if (din == null) return;
             din.close();
         }
 

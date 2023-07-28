@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class InOutFastest_Template {
-    private static final PrintWriter out = new PrintWriter(System.out);
-    private static final Reader in = new Reader();
+    public static final PrintWriter out = new PrintWriter(System.out);
+    public static final R in = new R();
 
     public static void main(String[] args) throws IOException {
 
@@ -22,22 +22,22 @@ public class InOutFastest_Template {
         out.flush();
     }
 
-    static class Reader {
-        final private int BUFFER_SIZE = 1 << 16;
+    static class R {
+        final private int SIZE = 1 << 16;
         private final DataInputStream din;
-        private final byte[] buffer;
-        private int bufferPointer, bytesRead;
+        private final byte[] bf;
+        private int bfP, bR;
 
-        public Reader() {
+        public R() {
             din = new DataInputStream(System.in);
-            buffer = new byte[BUFFER_SIZE];
-            bufferPointer = bytesRead = 0;
+            bf = new byte[SIZE];
+            bfP = bR = 0;
         }
 
-        public Reader(String file_name) throws IOException {
+        public R(String file_name) throws IOException {
             din = new DataInputStream(new FileInputStream(file_name));
-            buffer = new byte[BUFFER_SIZE];
-            bufferPointer = bytesRead = 0;
+            bf = new byte[SIZE];
+            bfP = bR = 0;
         }
 
         public String readLine() throws IOException {
@@ -107,13 +107,13 @@ public class InOutFastest_Template {
         }
 
         private void fillBuffer() throws IOException {
-            bytesRead = din.read(buffer, bufferPointer = 0, BUFFER_SIZE);
-            if (bytesRead == -1) buffer[0] = -1;
+            bR = din.read(bf, bfP = 0, SIZE);
+            if (bR == -1) bf[0] = -1;
         }
 
         private byte read() throws IOException {
-            if (bufferPointer == bytesRead) fillBuffer();
-            return buffer[bufferPointer++];
+            if (bfP == bR) fillBuffer();
+            return bf[bfP++];
         }
 
         public void close() throws IOException {

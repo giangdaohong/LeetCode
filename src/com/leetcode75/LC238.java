@@ -3,6 +3,9 @@ package com.leetcode75;
 public class LC238 {
 
     public static void main(String[] args) {
+        String version = System.getProperty("java.version");
+        System.out.println(version);
+
         int[] nums = new int[]{1, 2, 3, 4};
         new LC238().productExceptSelf(nums);
     }
