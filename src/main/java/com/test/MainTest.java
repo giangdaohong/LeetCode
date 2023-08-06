@@ -4,6 +4,11 @@ import java.util.Arrays;
 
 public class MainTest {
     public static void main(String[] args) {
+        System.out.println(System.getProperty("java.version"));
+        int log2N = 31 - Integer.numberOfLeadingZeros(100000);
+
+        System.out.println("Log 1M = " + log2N);
+        System.out.println("2^16 = " + String.valueOf(Math.pow(2, 15)));
         int[][][][] fourD = new int[2][2][2][2];
 
         fourD[0][0][0][0] = 1;

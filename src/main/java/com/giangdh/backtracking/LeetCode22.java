@@ -2,6 +2,8 @@ package com.giangdh.backtracking;
 
 import java.util.*;
 
+import static java.util.List.*;
+
 public class LeetCode22 {
 
     public static void main(String[] args) {
@@ -26,7 +28,7 @@ public class LeetCode22 {
 
     public List<String> generateParenthesis(int n) {
         List<String> answer = new ArrayList<>();
-        Queue<String> queue = new LinkedList<>(List.of(""));
+        Queue<String> queue = new LinkedList<>();
 
         while (!queue.isEmpty()) {
             String curString = queue.poll();

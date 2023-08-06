@@ -40,6 +40,16 @@ public class InOutFastest_Template {
             bfP = bR = 0;
         }
 
+        private static int[][] nextArray2D(int n, int m) throws IOException {
+            int[][] rs = new int[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    rs[i][j] = in.nextInt();
+                }
+            }
+            return rs;
+        }
+
         public String readLine() throws IOException {
             byte[] buf = new byte[64]; // line length
             int cnt = 0, c;

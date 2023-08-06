@@ -1,12 +1,15 @@
 package com.codeforces.sparse_tables;
 
+import java.io.PrintStream;
+
 public class SparseTables {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 4, 5, 7, 1};
         System.out.println(Math.log(9) / Math.log(2));
         System.out.println(new SparseTables().RMQ1(nums, 2, 5));
         System.out.println(new SparseTables().RMQ2(nums, 2, 5));
-        System.out.println(new SparseTables().RMOfficial(nums, 2, 5));
+        PrintStream out = System.out;
+        out.println(new SparseTables().RMOfficial(nums, 2, 5));
     }
 
 
@@ -15,9 +18,14 @@ public class SparseTables {
         int[][] sparse = preprocessOffical(nums);
         int j = (int) (Math.log(R - L + 1) / Math.log(2));
 
-        int rs = Math.min(sparse[L][j], sparse[R - (1 << j) + 1][j]);
+        int rs = extracted(L, R, sparse, j);
 
         return rs;
+    }
+
+
+    private int extracted(int L, int R, int[][] sparse, int j) {
+        return Math.min(sparse[L][j], sparse[R - (1 << j) + 1][j]);
     }
 
     int[][] preprocessOffical(int[] nums) {
