@@ -1,7 +1,6 @@
 package com.example.java;
 
 import com.codeforces.rmq.DMAP;
-import com.codeforces.rmq.DMAP;
 import com.example.java.model.TestCase;
 import com.example.java.util.FileUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;

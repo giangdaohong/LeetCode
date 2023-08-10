@@ -1,12 +1,10 @@
 package com.codechef.inoutfastest;
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class InOutFastest_Template {
     public static final PrintWriter out = new PrintWriter(System.out);
+    DataInputStream inputStream = new DataInputStream( new DataInputStream(System.in));
     public static final R in = new R();
 
     public static void main(String[] args) throws IOException {
@@ -51,7 +49,7 @@ public class InOutFastest_Template {
         }
 
         public String readLine() throws IOException {
-            byte[] buf = new byte[64]; // line length
+            byte[] buf = new byte[1024]; // line length
             int cnt = 0, c;
             while ((c = read()) != -1) {
                 if (c == '\n') {
