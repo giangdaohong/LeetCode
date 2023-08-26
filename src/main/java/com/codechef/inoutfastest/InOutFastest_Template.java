@@ -135,6 +135,9 @@ public class InOutFastest_Template {
                 a[i] = nextInt();
             return a;
         }
+        public char nextChar() throws IOException {
+            return (char) (read());
+        }
     }
 }
 

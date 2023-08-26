@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("Hello world");
         new Main().run();
     }
 
@@ -23,6 +24,7 @@ public class Main {
 
         if (k > 0) {
             while (end < s.length) {
+                System.out.println("looping here");
                 if (s[end] == '1') {
                     cnt++;
                     if (cnt == k) {
@@ -71,8 +73,8 @@ public class Main {
 
     void runIO() {
         try {
-            in = new FastScanner(new File("expr.in"));
-            out = new PrintWriter(new FileWriter(new File("expr.out")));
+            in = new FastScanner(new File("in.in"));
+            out = new PrintWriter(new FileWriter(new File("out.out")));
             solve();
             out.close();
         } catch (Exception ex) {
