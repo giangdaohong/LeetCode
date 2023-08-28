@@ -4,13 +4,13 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class CF_Template {
+public class CFTemplate {
     static R in = new R();
     static PrintWriter out = new PrintWriter(System.out);
 
     public static void main(String[] args) throws IOException, InterruptedException {
         runTest();
-        CF_Template.run();
+        CFTemplate.run();
     }
 
     static void run() throws IOException {
