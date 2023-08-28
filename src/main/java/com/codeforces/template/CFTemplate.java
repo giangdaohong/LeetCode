@@ -9,7 +9,7 @@ public class CFTemplate {
     static PrintWriter out = new PrintWriter(System.out);
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        runTest();
+       // runTest();
         CFTemplate.run();
     }
 
