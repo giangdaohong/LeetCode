@@ -28,8 +28,9 @@ public class LeetCode628 {
 
         while (k > 0) {
             if (k % 2 == 1) {
-                // take one leftmost or one rightmost firs and two rightmost or two leftmost
-                // respectively
+                /* take one leftmost or one rightmost firs and two rightmost or two leftmost
+                 * respectively
+                */ 
                 if (nums[l] * nums[l + 1] > nums[r] * nums[r - 1]) {
                     product = product * nums[r--];
                     
